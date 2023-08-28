@@ -1,0 +1,143 @@
+[0m[1mdata.huaweicloud_images_image.myimage: Reading...[0m[0m
+[0m[1mdata.huaweicloud_availability_zones.myaz: Reading...[0m[0m
+[0m[1mdata.huaweicloud_availability_zones.myaz: Read complete after 1s [id=221423761][0m
+[0m[1mdata.huaweicloud_compute_flavors.myflavor: Reading...[0m[0m
+[0m[1mdata.huaweicloud_compute_flavors.myflavor: Read complete after 2s [id=2797063393][0m
+[0m[1mdata.huaweicloud_images_image.myimage: Read complete after 3s [id=b0c2b3e0-6a1f-499b-9df0-4d1b2e374a54][0m
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  [32m+[0m create[0m
+
+Terraform will perform the following actions:
+
+[1m  # huaweicloud_compute_instance.ecs[0m will be created
+[0m  [32m+[0m[0m resource "huaweicloud_compute_instance" "ecs" {
+      [32m+[0m[0m access_ip_v4          = (known after apply)
+      [32m+[0m[0m access_ip_v6          = (known after apply)
+      [32m+[0m[0m availability_zone     = "ap-southeast-3a"
+      [32m+[0m[0m charging_mode         = "postPaid"
+      [32m+[0m[0m enterprise_project_id = "cc8e405d-638b-4e5b-a81f-e945bf626e66"
+      [32m+[0m[0m flavor_id             = "s3.large.2"
+      [32m+[0m[0m flavor_name           = (known after apply)
+      [32m+[0m[0m id                    = (known after apply)
+      [32m+[0m[0m image_id              = "b0c2b3e0-6a1f-499b-9df0-4d1b2e374a54"
+      [32m+[0m[0m image_name            = (known after apply)
+      [32m+[0m[0m name                  = "ecs-terraform"
+      [32m+[0m[0m power_action          = (known after apply)
+      [32m+[0m[0m public_ip             = (known after apply)
+      [32m+[0m[0m region                = (known after apply)
+      [32m+[0m[0m security_group_ids    = (known after apply)
+      [32m+[0m[0m security_groups       = (known after apply)
+      [32m+[0m[0m status                = (known after apply)
+      [32m+[0m[0m stop_before_destroy   = false
+      [32m+[0m[0m system_disk_id        = (known after apply)
+      [32m+[0m[0m system_disk_size      = 40
+      [32m+[0m[0m system_disk_type      = "SAS"
+      [32m+[0m[0m user_data             = "c352c24d2f30d87dc0dcb9a43eec5667f8cadce7"
+      [32m+[0m[0m volume_attached       = (known after apply)
+
+      [32m+[0m[0m network {
+          [32m+[0m[0m access_network = false
+          [32m+[0m[0m fixed_ip_v4    = "192.168.0.100"
+          [32m+[0m[0m fixed_ip_v6    = (known after apply)
+          [32m+[0m[0m mac            = (known after apply)
+          [32m+[0m[0m port           = (known after apply)
+          [32m+[0m[0m uuid           = (known after apply)
+        }
+    }
+
+[1m  # huaweicloud_networking_secgroup.mysecgroup[0m will be created
+[0m  [32m+[0m[0m resource "huaweicloud_networking_secgroup" "mysecgroup" {
+      [32m+[0m[0m description           = (known after apply)
+      [32m+[0m[0m enterprise_project_id = (known after apply)
+      [32m+[0m[0m id                    = (known after apply)
+      [32m+[0m[0m name                  = "sec"
+      [32m+[0m[0m region                = (known after apply)
+      [32m+[0m[0m tenant_id             = (known after apply)
+    }
+
+[1m  # huaweicloud_networking_secgroup_rule.http[0m will be created
+[0m  [32m+[0m[0m resource "huaweicloud_networking_secgroup_rule" "http" {
+      [32m+[0m[0m description       = "Enable for accessing HTTP trafiic from outside"
+      [32m+[0m[0m direction         = "ingress"
+      [32m+[0m[0m ethertype         = "IPv4"
+      [32m+[0m[0m id                = (known after apply)
+      [32m+[0m[0m port_range_max    = 80
+      [32m+[0m[0m port_range_min    = 80
+      [32m+[0m[0m protocol          = "tcp"
+      [32m+[0m[0m region            = (known after apply)
+      [32m+[0m[0m remote_group_id   = (known after apply)
+      [32m+[0m[0m remote_ip_prefix  = "0.0.0.0/0"
+      [32m+[0m[0m security_group_id = (known after apply)
+      [32m+[0m[0m tenant_id         = (known after apply)
+    }
+
+[1m  # huaweicloud_networking_secgroup_rule.https[0m will be created
+[0m  [32m+[0m[0m resource "huaweicloud_networking_secgroup_rule" "https" {
+      [32m+[0m[0m description       = "Enable for accessing HTTPS traffic from outside"
+      [32m+[0m[0m direction         = "ingress"
+      [32m+[0m[0m ethertype         = "IPv4"
+      [32m+[0m[0m id                = (known after apply)
+      [32m+[0m[0m port_range_max    = 443
+      [32m+[0m[0m port_range_min    = 443
+      [32m+[0m[0m protocol          = "tcp"
+      [32m+[0m[0m region            = (known after apply)
+      [32m+[0m[0m remote_group_id   = (known after apply)
+      [32m+[0m[0m remote_ip_prefix  = "0.0.0.0/0"
+      [32m+[0m[0m security_group_id = (known after apply)
+      [32m+[0m[0m tenant_id         = (known after apply)
+    }
+
+[1m  # huaweicloud_networking_secgroup_rule.sg_rule_common[0m will be created
+[0m  [32m+[0m[0m resource "huaweicloud_networking_secgroup_rule" "sg_rule_common" {
+      [32m+[0m[0m direction         = "ingress"
+      [32m+[0m[0m ethertype         = "IPv4"
+      [32m+[0m[0m id                = (known after apply)
+      [32m+[0m[0m port_range_max    = (known after apply)
+      [32m+[0m[0m port_range_min    = (known after apply)
+      [32m+[0m[0m protocol          = "icmp"
+      [32m+[0m[0m region            = (known after apply)
+      [32m+[0m[0m remote_group_id   = (known after apply)
+      [32m+[0m[0m remote_ip_prefix  = (known after apply)
+      [32m+[0m[0m security_group_id = (known after apply)
+      [32m+[0m[0m tenant_id         = (known after apply)
+    }
+
+[1m  # huaweicloud_vpc.Terraform-test-Geethaka[0m will be created
+[0m  [32m+[0m[0m resource "huaweicloud_vpc" "Terraform-test-Geethaka" {
+      [32m+[0m[0m cidr                  = "192.168.0.0/16"
+      [32m+[0m[0m enterprise_project_id = (known after apply)
+      [32m+[0m[0m id                    = (known after apply)
+      [32m+[0m[0m name                  = "Terraform-test-Geethaka"
+      [32m+[0m[0m region                = (known after apply)
+      [32m+[0m[0m routes                = (known after apply)
+      [32m+[0m[0m shared                = (known after apply)
+      [32m+[0m[0m status                = (known after apply)
+    }
+
+[1m  # huaweicloud_vpc_subnet.subnet_001[0m will be created
+[0m  [32m+[0m[0m resource "huaweicloud_vpc_subnet" "subnet_001" {
+      [32m+[0m[0m availability_zone = (known after apply)
+      [32m+[0m[0m cidr              = "192.168.0.0/24"
+      [32m+[0m[0m dhcp_enable       = true
+      [32m+[0m[0m dns_list          = (known after apply)
+      [32m+[0m[0m gateway_ip        = "192.168.0.1"
+      [32m+[0m[0m id                = (known after apply)
+      [32m+[0m[0m ipv6_cidr         = (known after apply)
+      [32m+[0m[0m ipv6_gateway      = (known after apply)
+      [32m+[0m[0m ipv6_subnet_id    = (known after apply)
+      [32m+[0m[0m name              = "subnet_001"
+      [32m+[0m[0m primary_dns       = (known after apply)
+      [32m+[0m[0m region            = (known after apply)
+      [32m+[0m[0m secondary_dns     = (known after apply)
+      [32m+[0m[0m subnet_id         = (known after apply)
+      [32m+[0m[0m vpc_id            = (known after apply)
+    }
+
+[1mPlan:[0m 7 to add, 0 to change, 0 to destroy.
+[0m[90m
+─────────────────────────────────────────────────────────────────────────────[0m
+
+Note: You didn't use the -out option to save this plan, so Terraform can't
+guarantee to take exactly these actions if you run "terraform apply" now.

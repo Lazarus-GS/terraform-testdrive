@@ -1,0 +1,6 @@
+/home/geethaka/terraform-project/test/ecs/config.tf
+/home/geethaka/terraform-project/test/ecs/.terraform.lock.hcl
+/home/geethaka/terraform-project/test/ecs/terraform.tfstate
+config.tf
+terraform.tfstate
+terraform.tfstate.backup

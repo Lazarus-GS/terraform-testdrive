@@ -35,9 +35,9 @@ data "huaweicloud_images_image" "myimage" {
     most_recent = true
 }
 
-# data "huaweicloud_vpc_subnet" "Terraform-test-Geethaka" {
-#     name = "subnet_001"
-# }
+data "huaweicloud_vpc_subnet" "Terraform-test-Geethaka" {
+    name = "subnet_001"
+}
 
 
 resource "random_password" "password" {
